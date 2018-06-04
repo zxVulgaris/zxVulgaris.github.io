@@ -1,0 +1,293 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Github Problems | Xena</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="zxVulgaris">
+    
+    <meta name="description" content="搭建一个GitHub pages的博客真是不容易啊，细数我遇到的那些坑，我觉得有必要记录下来">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Xena" title="Xena"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Xena">Xena</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/06/03/Github-Problems/" title="Github Problems" itemprop="url">Github Problems</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="zxVulgaris">zxVulgaris</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-06-03T09:39:13.000Z" itemprop="datePublished">2018-06-03</time>
+    Updated:<time datetime="2018-06-04T08:32:14.030Z" itemprop="dateModified">2018-06-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>搭建一个GitHub pages的博客真是不容易啊，细数我遇到的那些坑，我觉得有必要记录下来</p>
+<a id="more"></a>
+<p>1.第一个坑，对我来说应该不算是坑，因为我跨过去了哈哈。是关于GitHub pages的二级域名，一定是以username.github.io为名字的，我在网上找了教程照着来的，所以没有出错。</p>
+<p>2.第二个坑，那是真的坑，弄得我一中午都睡不着，就想着为什么为什么。因为是GitHub小白，虽然去年就已经注册过了git但是从来也没用过，所以第一次用的时候我真的是一头雾水，只知道跟着教程做，不知道为什么要这么做，这第二个坑就是我在本地用hexo搭建了一个网站，可是很奇怪的是在GitHub网站上也有一个，而且两个还不一样，想不通为什么明明两个是相通的但是却网站内容模板都不一样啊啊啊啊<br><img src="/2018/06/03/Github-Problems/../Github-Problems/1.jpg" alt="愤怒的表情"><br>在经过n次百度后我明白了，原来还要从本地手动上传的。小白的我表示，对不起这些年学的IT，泪奔</p>
+<p>3.第三个坑是用git bush上传，原句的语法是这样的git push -u origin master,就是把hexo上的网页上传到GitHub中，但是呢，似乎不起什么作用还报了错，了错，错，错，错~~~<br>后面把报错的语句复制粘贴到百度上，才发现原来不止我一个人有这个问题，原因是README.md不在本地仓库上，在GitHub远程仓库上，改成git push -f origin master就可以了。</p>
+<p>4.第三个坑是上传内容出错了，上传之后我发现总是在报错我landscape文件夹里面README.md文件里面的这段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![img caption](img url)</span><br><span class="line"></span><br><span class="line">&#123;% fancybox img_url [img_thumbnail] [img_caption] %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>百度了下，据说是得改成这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% highlight liquid linenos%&#125;</span><br><span class="line">&#123;% raw %&#125;</span><br><span class="line"></span><br><span class="line">![img caption](img url)</span><br><span class="line"></span><br><span class="line">&#123;% fancybox img_url [img_thumbnail] [img_caption] %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endraw %&#125;</span><br><span class="line">&#123;% endhighlight %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>嗯，我照着改了，果然就没有出错的，这个错误是由于Jekyll尝试把代码块里面的Liquid代码也一并generate，但是因为都是代码片段，所以一直报错，要用解决，emmm，我觉得我不是很懂</p>
+<p>5.但是接下来又出错了，点开我在GitHub pages上的博客页面，它是这样的<br><img src="/2018/06/03/Github-Problems/../Github-Problems/2.jpg" alt="404页面"><br>当时是十分崩溃的，此时距离中午吃饭时间还有一小时，为什么要以吃饭时间计时呢，可能是我对于吃饭这件事比较执着，真的在吃饭之前就解决了404问题哈哈<br>怎么解决的呢，还是百度，发现百度真的是个神奇的东西，什么都有<br>百度之后我发现是我在GitHub库里面没有index页面，我就在我上传的文件和文件夹里面找啊找啊，还是没找着<br>然后继续百度，WHAT！上传的竟然是public文件夹，再一看我好像上传的是theme文件夹，老子真的是，欲哭无泪的感觉，啊啊啊</p>
+<p>6.最后一个坑是上传public库，我重复操作hexo g、s、d发现都是显示已经update，但是GitHub页面中还是没有index，还是没有上传public文件夹，继续百度吧，<br>百度到了这么一个问题<a href="https://www.v2ex.com/t/253579" target="_blank" rel="noopener">https://www.v2ex.com/t/253579</a><br>跟我挺相似的，但是我没细看，因为里面要执行的hexo命令太多了，执行了npm install hexo-generator-index –save这个命令，但是啊切不可小看了自己的错误，别人是没有上传index页面，而我是连整个public文件夹都没有上传，于是继续百度，最终找到了<a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa" target="_blank" rel="noopener">http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa</a><br>这个页面，里面的上传到GitHub的解释拯救了我，原来是要执行这个命令npm install hexo-deployer-git –save，执行后再一看哈哈，终于有了index.html页面，点开setting中我的域名发现又出现了404页面，再去翻教程，也就是刚刚找到的那个博客，找出了问题，是_config.yml的deploy设置出了问题<br>正确写法：repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:zxVulgaris/zxVulgaris.github.io.git<br>错误写法：repository: <a href="https://github.com/zxVulgaris/zxVulgaris.github.io.git" target="_blank" rel="noopener">https://github.com/zxVulgaris/zxVulgaris.github.io.git</a><br>我肯定是采用了后者呗，后者是hexo2.x的写法，然后执行hexo g，哈哈成功<br><img src="/2018/06/03/Github-Problems/../Github-Problems/3.jpg" alt="开心的剪刀手"></p>
+<p>Last but not least,让我小小的总结以下吧，从开始搭建GitHub pages到搭建完成，虽然其中遇到了很多很多的坑，一个坑就足够我捞一天，但是完成之后的成就感，以及现在对于GitHub的了解确实让我格外兴奋，以至于建成功那天下午买了好多东西，哈哈。其实在我碰到第二个坑的时候我就有求助他人，但是奈何我们专业比我水平高的实再不多，而且那几个还不是我们班的和我也不熟，所以只好硬着头皮一个一个闯，这种闯过关的感觉还不错，作为一个IT程序媛，还是得：生命不息，折腾不止，不说了，滚去看markdown语法了，感觉又是一个新世界<br><img src="/2018/06/03/Github-Problems/../Github-Problems/4.jpg" alt="小草的图片"></p>
+<p>附上我这次找的好几个大神的博客<br><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="noopener">http://ibruce.info/2013/11/22/hexo-your-blog/</a><br><a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa" target="_blank" rel="noopener">http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa</a></p>
+<p>我的博客还很简陋，还有很多需要学习的地方，我会加油的！（欢迎交流）</p>
+<p>T_T刚刚又出错了，文章里面凡是包含<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#125;&#125;和&#123;% %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>都要用注释，不行得赶紧去学习了886</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2018/06/03/Github-Problems/" data-title="Github Problems | Xena" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/06/01/my-first-post/"  title="my first post">
+ <strong>NEXT:</strong><br/> 
+ <span>my first post
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://yoursite.com" target="_blank" title="zxVulgaris">zxVulgaris</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

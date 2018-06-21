@@ -1,0 +1,292 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>php_bug | Xena</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="zxVulgaris">
+    
+    <meta name="description" content="这是一篇我在进行PHP个人博客的搭建时出现的错误合辑">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Xena" title="Xena"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Xena">Xena</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/06/16/php-bug/" title="php_bug" itemprop="url">php_bug</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="zxVulgaris">zxVulgaris</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-06-16T13:23:37.000Z" itemprop="datePublished">2018-06-16</time>
+    Updated:<time datetime="2018-06-17T10:11:44.067Z" itemprop="dateModified">2018-06-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>这是一篇我在进行PHP个人博客的搭建时出现的错误合辑</p>
+<a id="more"></a>
+<p>1.PHP报错类型之函数未定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: Uncaught Error: Call to undefined function mysql_fetch_array() </span><br><span class="line">in F:\softwares\xampp\htdocs\personnalblog\edit.php:27 </span><br><span class="line">Stack trace: #0 &#123;main&#125; thrown in </span><br><span class="line">F:\softwares\xampp\htdocs\personnalblog\edit.php on line 27</span><br></pre></td></tr></table></figure></p>
+<p>如果是系统函数发出以上错误，有可能是使用不当，有可能是不兼容。我在使用fetch_array()函数的时候出现问题是因为mysql函数已经被废弃了，只能使用mysqli函数，具体原因有待查询</p>
+<p>2.PHP报错类型之键值对中的键未定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Notice: Undefined index: index in </span><br><span class="line">F:\softwares\xampp\htdocs\personnalblog\edit.php on line 13</span><br></pre></td></tr></table></figure></p>
+<p>出现这类错误的而愿意往往是自己的粗心大意造成的，我看到此类错误的时候是去核对表单中的name值和php中<code>$_POST</code>方括号中的值是否相同，最后发现是自己大意了</p>
+<p>3.PHP报错类型之sql语句未执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: mysqli_fetch_array() expects parameter 1 to be mysqli_result, </span><br><span class="line">boolean given in F:\softwares\xampp\htdocs\personnalblog\edit.php on line 27</span><br></pre></td></tr></table></figure></p>
+<p>在检查之后发现出错的并不是php代码，而是获取的id值那段代码错误</p>
+<p>4.PHP报错类型之phpmyadmin数据库乱码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$db=new MySQLi(&apos;localhost&apos;,&apos;root&apos;,&apos;&apos;,&apos;test&apos;);</span><br><span class="line">$db-&gt;query(&apos;SET NAMES UTF8&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>向数据库上传数据的时候发现，在test数据表中的数据是乱码的，还以为是phpmyadmin的设置的问题，在网上搜索了许多，有的说要改一下系统设置，但过于繁琐而且初次接触php怕过于鲁莽破坏php环境，在浏览大量解决办法之后找到了解决办法，上传数据的时候就需要设置以上代码，保证数据的正确性，当然这得结合具体情况具体分析，有的人可能是phpmyadmin的问题也说不定。</p>
+<p>5.PHP报错类型之sql语句错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$SQL=&apos;UPDATE blogtable SET title=&quot;$_POST[&apos;title&apos;]&quot;,content=&quot;$_POST[&apos;content&apos;]&quot; WHERE id=&quot;$_POST[&apos;id&apos;]&quot;;</span><br><span class="line">$sql=&quot;UPDATE blogtable SET title=&apos;$_POST[&apos;title&apos;]&apos;,content=&apos;$_POST[&apos;content&apos;]&apos; WHERE id=&apos;$_POST[&apos;id&apos;]&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>其实这个错误和第一个错误一样，都是由于sql语句没有执行造成的错误，但是不同的是该错误是由于sql语句有语法错误造成的，一般在sublime中正确的sql语句是由明显的颜色区别的，如果发现sql语句全都是一个颜色，那么恭喜你，你中奖了，找找sql的语法错误吧</p>
+<p>6.PHP报错类型之我的无知<br>在做第一个php页面的时候总是出现各种奇奇怪怪的错误，最开始的有数据库连接错误（因为我把root初始密码搞错了），还有单引号双引号的混杂错误，sql语句没有执行的错误等等，一开始总是手忙脚乱，各种百度，甚至一度觉得自己配置的PHP环境出了问题，在跟有经验的人士进行交流之后她是这么跟我说的，<font style="color: red">她说她当时敲代码的时候也觉得是环境有问题，但后面发现环境出问题的概率很小，大部分出错的原因可能都在自己敲的代码不符合规范或者有些步骤漏掉了，总之是自己的原因比较大。</font><br>后面对整个流程有了大致了解之后，出现问题的时候也不再惊惶了，因为大致知道问题在哪，有的时候不知道问题到底在哪的时候就用if/else语句进行排除法，一部分一部分找，最终不负我望，这次php个人博客的动态页面帮助我系统地了解到了前后台交互，也让我对PHP产生了一定的兴趣，我觉得我可以系统地学习以下PHP和MySQL的有关语法，以及PHP的报错函数，被PHPbug弄昏了头的我的个人笔记到此为止，这个小东西也不是很完善，我会好好学习使用前后台交互的，特别如何在融会贯通地使用PHP和JavaScript这两个东西，真的很头疼啊，现在还没解决在点击删除之后如何弹出confirm框然后根据具体的返回值进行php操作，唉。</p>
+<p>附上我在建博客的时候用到的借鉴作品：<br><a href="https://www.cnblogs.com/aqxss/p/6196061.html" target="_blank" rel="noopener">https://www.cnblogs.com/aqxss/p/6196061.html</a><br><a href="https://www.cnblogs.com/lovebing/p/6440224.html" target="_blank" rel="noopener">https://www.cnblogs.com/lovebing/p/6440224.html</a><br>此外还有一本我在图书馆借的书帮了我挺多，是清华大学出版社出版的PHP+MySQL企业项目开发案例教程，作者是曹福凯、孙晋、沈宏，感谢这本书带领小白的我冲突重围，赢得胜利，谢谢你们</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2018/06/16/php-bug/" data-title="php_bug | Xena" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/06/03/Github-Problems/"  title="Github Problems">
+ <strong>NEXT:</strong><br/> 
+ <span>Github Problems
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://yoursite.com" target="_blank" title="zxVulgaris">zxVulgaris</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

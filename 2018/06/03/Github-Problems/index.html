@@ -73,7 +73,7 @@
     </p>
   <p class="article-time">
     <time datetime="2018-06-03T09:39:13.000Z" itemprop="datePublished">2018-06-03</time>
-    Updated:<time datetime="2018-06-04T08:32:14.030Z" itemprop="dateModified">2018-06-04</time>
+    Updated:<time datetime="2018-06-04T09:00:39.510Z" itemprop="dateModified">2018-06-04</time>
     
   </p>
 </header>
@@ -95,8 +95,8 @@
 <p>嗯，我照着改了，果然就没有出错的，这个错误是由于Jekyll尝试把代码块里面的Liquid代码也一并generate，但是因为都是代码片段，所以一直报错，要用解决，emmm，我觉得我不是很懂</p>
 <p>5.但是接下来又出错了，点开我在GitHub pages上的博客页面，它是这样的<br><img src="/2018/06/03/Github-Problems/../Github-Problems/2.jpg" alt="404页面"><br>当时是十分崩溃的，此时距离中午吃饭时间还有一小时，为什么要以吃饭时间计时呢，可能是我对于吃饭这件事比较执着，真的在吃饭之前就解决了404问题哈哈<br>怎么解决的呢，还是百度，发现百度真的是个神奇的东西，什么都有<br>百度之后我发现是我在GitHub库里面没有index页面，我就在我上传的文件和文件夹里面找啊找啊，还是没找着<br>然后继续百度，WHAT！上传的竟然是public文件夹，再一看我好像上传的是theme文件夹，老子真的是，欲哭无泪的感觉，啊啊啊</p>
 <p>6.最后一个坑是上传public库，我重复操作hexo g、s、d发现都是显示已经update，但是GitHub页面中还是没有index，还是没有上传public文件夹，继续百度吧，<br>百度到了这么一个问题<a href="https://www.v2ex.com/t/253579" target="_blank" rel="noopener">https://www.v2ex.com/t/253579</a><br>跟我挺相似的，但是我没细看，因为里面要执行的hexo命令太多了，执行了npm install hexo-generator-index –save这个命令，但是啊切不可小看了自己的错误，别人是没有上传index页面，而我是连整个public文件夹都没有上传，于是继续百度，最终找到了<a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa" target="_blank" rel="noopener">http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa</a><br>这个页面，里面的上传到GitHub的解释拯救了我，原来是要执行这个命令npm install hexo-deployer-git –save，执行后再一看哈哈，终于有了index.html页面，点开setting中我的域名发现又出现了404页面，再去翻教程，也就是刚刚找到的那个博客，找出了问题，是_config.yml的deploy设置出了问题<br>正确写法：repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:zxVulgaris/zxVulgaris.github.io.git<br>错误写法：repository: <a href="https://github.com/zxVulgaris/zxVulgaris.github.io.git" target="_blank" rel="noopener">https://github.com/zxVulgaris/zxVulgaris.github.io.git</a><br>我肯定是采用了后者呗，后者是hexo2.x的写法，然后执行hexo g，哈哈成功<br><img src="/2018/06/03/Github-Problems/../Github-Problems/3.jpg" alt="开心的剪刀手"></p>
-<p>Last but not least,让我小小的总结以下吧，从开始搭建GitHub pages到搭建完成，虽然其中遇到了很多很多的坑，一个坑就足够我捞一天，但是完成之后的成就感，以及现在对于GitHub的了解确实让我格外兴奋，以至于建成功那天下午买了好多东西，哈哈。其实在我碰到第二个坑的时候我就有求助他人，但是奈何我们专业比我水平高的实再不多，而且那几个还不是我们班的和我也不熟，所以只好硬着头皮一个一个闯，这种闯过关的感觉还不错，作为一个IT程序媛，还是得：生命不息，折腾不止，不说了，滚去看markdown语法了，感觉又是一个新世界<br><img src="/2018/06/03/Github-Problems/../Github-Problems/4.jpg" alt="小草的图片"></p>
-<p>附上我这次找的好几个大神的博客<br><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="noopener">http://ibruce.info/2013/11/22/hexo-your-blog/</a><br><a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa" target="_blank" rel="noopener">http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa</a></p>
+<p>Last but not least,让我小小的总结以下吧，从开始搭建GitHub pages到搭建完成，虽然其中遇到了很多很多的坑，一个坑就足够我捞一天，但是完成之后的成就感，以及现在对于GitHub的了解确实让我格外兴奋，以至于建成功那天下午买了好多东西，哈哈。其实在我碰到第二个坑的时候我就有求助他人，但是奈何我们专业比我水平高的实在不多，而且那几个还不是我们班的和我也不熟，所以只好硬着头皮一个一个闯，这种闯过关的感觉还不错，作为一个IT程序媛，还是得：生命不息，折腾不止，不说了，滚去看markdown语法了，感觉又是一个新世界<br><img src="/2018/06/03/Github-Problems/../Github-Problems/4.jpg" alt="小草的图片"></p>
+<p>附上我这次找的好几个大神的教程<br><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="noopener">http://ibruce.info/2013/11/22/hexo-your-blog/</a><br><a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa" target="_blank" rel="noopener">http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa</a></p>
 <p>我的博客还很简陋，还有很多需要学习的地方，我会加油的！（欢迎交流）</p>
 <p>T_T刚刚又出错了，文章里面凡是包含<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#125;&#125;和&#123;% %&#125;</span><br></pre></td></tr></table></figure></p>
 <p>都要用注释，不行得赶紧去学习了886</p>
@@ -118,6 +118,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2018/06/16/php-bug/" title="php_bug">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  php_bug</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2018/06/01/my-first-post/"  title="my first post">

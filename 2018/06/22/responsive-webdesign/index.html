@@ -1,0 +1,310 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>responsive_webdesign | Xena</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="zxVulgaris">
+    
+    <meta name="description" content="响应式web学习笔记">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Xena" title="Xena"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Xena">Xena</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/06/22/responsive-webdesign/" title="responsive_webdesign" itemprop="url">responsive_webdesign</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="zxVulgaris">zxVulgaris</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-06-22T09:37:24.000Z" itemprop="datePublished">2018-06-22</time>
+    Updated:<time datetime="2018-06-24T11:34:33.607Z" itemprop="dateModified">2018-06-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>响应式web学习笔记<br><a id="more"></a></p>
+<p>#字体的单位有哪些呢#</p>
+<ul>
+<li><code>px</code>–像素</li>
+<li><code>em</code>–倍数单位</li>
+<li><code>rem</code>–和root元素的size大小相同，独立于模块</li>
+<li><code>%</code>–这个就不用说了吧</li>
+<li><code>vw vh vmin vmax</code>固定字体大小，但有的时候可能过大或者过小，不适合阅读</li>
+<li><code>xx-smaller x-small small medium large x-large xx-large</code><br>这其中支持视窗单位的浏览器最少，<code>rem</code>不能在IE８或者更低的版本中使用，尽量使用<code>ｅｍ</code>对元素的大小进行设置，<code>html{font-size: 62.5rem;}</code>然后再用<code>em</code>进行设置<br><a href="https://www.zcfy.cc/article/a-walkthrough-of-css-length-units-you-can-use-for-font-size-mdash-sitepoint-3256.html" target="_blank" rel="noopener">字体的单位的参考</a></li>
+</ul>
+<p>#有哪些新增加的html5属性呢#</p>
+<ul>
+<li>结构标签：<code>section</code> <code>article</code> <code>aside</code> <code>header</code> <code>hgroup</code> <code>nav</code> <code>figure</code></li>
+<li>表单标签：<code>emile</code> <code>url</code> <code>number</code> <code>range</code> <code>Date Pickers</code> <code>search</code> <code>color</code></li>
+<li>媒体标签：<code>video</code> <code>audio</code> <code>embed</code></li>
+<li>其他功能标签：<code>mark</code> <code>progress</code> <code>time</code> <code>ruby</code> <code>canvas</code> <code>command</code> <code>details</code> <code>dateilist</code> <code>keygen</code></li>
+<li>html5全局属性，对任意标签都可以使用的6个<code>data-yourvalue</code> <code>hidden</code> <code>spenllecheck</code> <code>tabindex</code><br><a href="https://blog.csdn.net/garvisjack/article/details/54754928#commentBox" target="_blank" rel="noopener">新增html5的属性</a></li>
+</ul>
+<p>#css3新增属性：orientation#<br><code>portrait</code>：<br>指定输出设备中的页面可见区域高度大于或等于宽度,可用于手机竖屏<br><code>landscape</code>：<br>除portrait值情况外，都是landscape，手机横屏</p>
+<p>#<code>！important</code>#<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div&#123;color:#f00!important; color:#000&#125;</span><br></pre></td></tr></table></figure></p>
+<p>IE以下浏览器的文本颜色为#000，其他为#f00<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div&#123;color:#f00!important&#125;</span><br><span class="line">div&#123;color:#000&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所有的浏览器都为#f00</p>
+<p>#兼容问题#</p>
+<ul>
+<li><code>-webket-</code>代表safari chrome的私有属性</li>
+<li><code>-moz-</code>代表firefox浏览器的私有属性</li>
+<li><code>-ms-</code>代表IE浏览器的私有属性</li>
+<li><code>-o-</code>代表opera浏览器的私有属性</li>
+</ul>
+<p>#响应式web设计#</p>
+<p><code>max-width</code>设置段落的最大宽度，用参数值有百分比、像素、none，inerit在任何版本的IE都不支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width: 1024px;)&#123;&#125;</span><br><span class="line">@media screen and (min-width: 1025px;)&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下载chrome的移动端测试工具<a href="https://chrome.google.com/webstore/detail/ripple-emulator-beta" target="_blank" rel="noopener">ripple</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2018/06/22/responsive-webdesign/" data-title="responsive_webdesign | Xena" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/06/16/php-bug/"  title="php_bug">
+ <strong>NEXT:</strong><br/> 
+ <span>php_bug
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://yoursite.com" target="_blank" title="zxVulgaris">zxVulgaris</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
